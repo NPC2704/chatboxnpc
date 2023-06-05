@@ -1,10 +1,9 @@
 import React from "react";
-
 import { Row, Col, Button, Typography } from "antd";
 import firebase, { auth } from "../../firebase/config";
 import { addDocument, generateKeywords } from "../../firebase/services";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import img from "../../assets/CHATpng.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import img from "../../assets/CHATpng.png";
 const { Title } = Typography;
 
 const fbProvider = new firebase.auth.FacebookAuthProvider();
@@ -27,33 +26,88 @@ export default function Login() {
   };
 
   return (
-    <div style={{width:"100%",height:"500px",marginTop:"100px"}}>
-      
-      <Row justify="center" style={{ height: "100%",width:"100%"}}>
-        <Col span={8} style={{height:"100%",padding:"10px",paddingLeft:"55px",paddingRight:"55px",borderRadius:"45px",backgroundColor:"#f5f5f5" }}>
-          <img src={img} style={{position:"absolute",height:"100px",width:"100px", borderRadius:"50%",top:"-50px",left:"200px"}}/>
-          <Title style={{ textAlign: "center",fontSize:30,color:"#444654", marginBottom:60,marginTop:60 }} level={3}>
-            New to ChatBox? Sign up! 
-          </Title>
-         
-          <Button 
-            style={{ width: "100%",color:"#ff7262",paddingTop:"5px",paddingBottom:"10px",height:50,fontSize:20 }}
-            onClick={() => handleLogin(googleProvider)}
-          >
-           <FontAwesomeIcon icon={['fab', 'google']} style={{marginRight:"15px"}}/>  Continue with Google
-          </Button>
-          <Title style={{ textAlign: "center" }} level={4}>
-            or
-          </Title>
-          <Button
-            style={{ width: "100%",backgroundColor:"#1877f2",color:"white" ,paddingTop:"5px",paddingBottom:"10px",height:50,fontSize:20,marginTop:10  }}
-            onClick={() => handleLogin(fbProvider)}
-          >
-        <FontAwesomeIcon icon={['fab', 'facebook']} style={{marginRight:"15px"}}/>    Continue with Facebook
-          </Button>
-          
-        </Col>
-      </Row>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "90%",
+          maxWidth: "400px",
+          padding: "10px",
+          backgroundColor: "#f5f5f5",
+          paddingBottom: "20px",
+          borderRadius: "20px",
+        }}
+      >
+        <img
+          src={img}
+          style={{
+            width: "100px",
+            height: "100px",
+            borderRadius: "50%",
+            margin: "0 auto",
+            display: "block",
+          }}
+        />
+        <Title
+          style={{
+            textAlign: "center",
+            fontSize: 25,
+            color: "#444654",
+            marginBottom: 60,
+            marginTop: 60,
+          }}
+          level={3}
+        >
+          New to ChatBox? Sign up!
+        </Title>
+        <Button
+          style={{
+            width: "100%",
+            color: "#ff7262",
+            paddingTop: "5px",
+            paddingBottom: "10px",
+            height: 50,
+            fontSize: 20,
+            marginBottom: 10,
+          }}
+          onClick={() => handleLogin(googleProvider)}
+        >
+          <FontAwesomeIcon
+            icon={["fab", "google"]}
+            style={{ marginRight: "15px" }}
+          />{" "}
+          Continue with Google
+        </Button>
+        <Title style={{ textAlign: "center" }} level={4}>
+          or
+        </Title>
+        <Button
+          style={{
+            width: "100%",
+            backgroundColor: "#1877f2",
+            color: "white",
+            paddingTop: "5px",
+            paddingBottom: "10px",
+            height: 50,
+            fontSize: 20,
+            marginTop: 10,
+          }}
+          onClick={() => handleLogin(fbProvider)}
+        >
+          <FontAwesomeIcon
+            icon={["fab", "facebook"]}
+            style={{ marginRight: "15px" }}
+          />{" "}
+          Continue with Facebook
+        </Button>
+      </div>
     </div>
   );
 }

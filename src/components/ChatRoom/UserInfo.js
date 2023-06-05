@@ -9,14 +9,26 @@ import { AppContext } from "../../Context/AppProvider";
 const WrapperStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 30px 16px;
+  padding: 20px;
   border-bottom: 1px solid #e6e6e6;
-  
+
   .username {
-    color: white;
     margin-left: 5px;
+    color: #202020;
+    font-size: 20px;
+  }
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+
+    .username {
+      display: none;
+    }
   }
 `;
+
 const Button = styled.button`
   background-color: #f4fdf9;
   color: black;
@@ -24,11 +36,18 @@ const Button = styled.button`
   border-radius: 5px;
   border: 1px solid #f0f3f7;
   cursor: pointer;
+  font-size: 14px;
+  padding: 8px;
   :hover {
-    
     background-color: white;
   }
-`
+
+  @media (max-width: 760px) {
+    font-size: 8px;
+    margin-top: 10px;
+  }
+`;
+
 export default function UserInfo() {
   const {
     user: { displayName, photoURL },
@@ -38,19 +57,19 @@ export default function UserInfo() {
   return (
     <WrapperStyled>
       <div>
-        <Avatar src={photoURL}>
+        <Avatar src={photoURL} style={{ marginRight: "10px" }}>
           {photoURL ? "" : displayName?.charAt(0)?.toUpperCase()}
         </Avatar>
-        <Typography.Text className="username" style={{color:"#202020",fontSize:"20px"}}>{displayName}</Typography.Text>
+        <Typography.Text className="username">{displayName}</Typography.Text>
       </div>
       <Button
+        className="button"
         ghost
         onClick={() => {
           // clear state in App Provider when logout
           clearState();
           auth.signOut();
         }}
-        
       >
         Đăng xuất
       </Button>
