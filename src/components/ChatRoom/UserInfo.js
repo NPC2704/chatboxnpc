@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Avatar, Typography } from "antd";
+import { Avatar, Typography } from "antd";
 import styled from "styled-components";
 
 import { auth } from "../../firebase/config";
@@ -9,15 +9,26 @@ import { AppContext } from "../../Context/AppProvider";
 const WrapperStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(82, 38, 83);
-
+  padding: 30px 16px;
+  border-bottom: 1px solid #e6e6e6;
+  
   .username {
     color: white;
     margin-left: 5px;
   }
 `;
-
+const Button = styled.button`
+  background-color: #f4fdf9;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f0f3f7;
+  cursor: pointer;
+  :hover {
+    
+    background-color: white;
+  }
+`
 export default function UserInfo() {
   const {
     user: { displayName, photoURL },
@@ -30,7 +41,7 @@ export default function UserInfo() {
         <Avatar src={photoURL}>
           {photoURL ? "" : displayName?.charAt(0)?.toUpperCase()}
         </Avatar>
-        <Typography.Text className="username">{displayName}</Typography.Text>
+        <Typography.Text className="username" style={{color:"#202020",fontSize:"20px"}}>{displayName}</Typography.Text>
       </div>
       <Button
         ghost
@@ -39,6 +50,7 @@ export default function UserInfo() {
           clearState();
           auth.signOut();
         }}
+        
       >
         Đăng xuất
       </Button>

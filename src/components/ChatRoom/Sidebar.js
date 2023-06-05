@@ -5,9 +5,11 @@ import RoomList from './RoomList';
 import styled from 'styled-components';
 
 const SidebarStyled = styled.div`
-  background: #3f0e40;
-  color: white;
+  background: white;
+  color: black;
   height: 100vh;
+ 
+  border:  1px solid #f0f3f7;
 `;
 
 export default function Sidebar() {
@@ -15,7 +17,7 @@ export default function Sidebar() {
     <SidebarStyled>
       <Row>
         <Col span={24}>
-          <UserInfo />
+          <UserInfo/>
         </Col>
         <Col span={24}>
           <RoomList />

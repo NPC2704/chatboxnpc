@@ -1,4 +1,4 @@
-import "./App.css";
+
 import Login from "./components/Login/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -7,7 +7,8 @@ import AuthProvider from "./Context/AuthProvider";
 import AppProvider from "./Context/AppProvider";
 import AddRoomModal from "./components/Modals/AddRoomModal";
 import InviteMemberModal from "./components/Modals/InviteMemberModal";
-
+import initFontAwesome from "./initFontAwesome";
+initFontAwesome();
 function App() {
   return (
     <BrowserRouter>

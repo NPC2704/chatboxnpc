@@ -47,8 +47,8 @@ export default function Message({ text, displayName, createdAt, photoURL }) {
           {formatDate(createdAt?.seconds)}
         </Typography.Text>
       </div>
-      <div>
-        <Typography.Text className='content'>{text}</Typography.Text>
+      <div style={{marginTop:"5px"}}>
+        <Typography.Text className='content' style={{backgroundColor:"#f1f1f1",padding:"6px",borderRadius:"10px",paddingLeft:"15px",paddingRight:"15px"}}>{text}</Typography.Text>
       </div>
     </WrapperStyled>
   );

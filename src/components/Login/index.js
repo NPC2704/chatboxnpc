@@ -1,8 +1,10 @@
 import React from "react";
+
 import { Row, Col, Button, Typography } from "antd";
 import firebase, { auth } from "../../firebase/config";
 import { addDocument, generateKeywords } from "../../firebase/services";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import img from "../../assets/CHATpng.png"
 const { Title } = Typography;
 
 const fbProvider = new firebase.auth.FacebookAuthProvider();
@@ -25,24 +27,31 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <Row justify="center" style={{ height: 800 }}>
-        <Col span={8}>
-          <Title style={{ textAlign: "center" }} level={3}>
-            Chat Box NPC
+    <div style={{width:"100%",height:"500px",marginTop:"100px"}}>
+      
+      <Row justify="center" style={{ height: "100%",width:"100%"}}>
+        <Col span={8} style={{height:"100%",padding:"10px",paddingLeft:"55px",paddingRight:"55px",borderRadius:"45px",backgroundColor:"#f5f5f5" }}>
+          <img src={img} style={{position:"absolute",height:"100px",width:"100px", borderRadius:"50%",top:"-50px",left:"200px"}}/>
+          <Title style={{ textAlign: "center",fontSize:30,color:"#444654", marginBottom:60,marginTop:60 }} level={3}>
+            New to ChatBox? Sign up! 
           </Title>
-          <Button
-            style={{ width: "100%", marginBottom: 5 }}
+         
+          <Button 
+            style={{ width: "100%",color:"#ff7262",paddingTop:"5px",paddingBottom:"10px",height:50,fontSize:20 }}
             onClick={() => handleLogin(googleProvider)}
           >
-            Đăng nhập bằng Google
+           <FontAwesomeIcon icon={['fab', 'google']} style={{marginRight:"15px"}}/>  Continue with Google
           </Button>
+          <Title style={{ textAlign: "center" }} level={4}>
+            or
+          </Title>
           <Button
-            style={{ width: "100%" }}
+            style={{ width: "100%",backgroundColor:"#1877f2",color:"white" ,paddingTop:"5px",paddingBottom:"10px",height:50,fontSize:20,marginTop:10  }}
             onClick={() => handleLogin(fbProvider)}
           >
-            Đăng nhập bằng Facebook
+        <FontAwesomeIcon icon={['fab', 'facebook']} style={{marginRight:"15px"}}/>    Continue with Facebook
           </Button>
+          
         </Col>
       </Row>
     </div>

@@ -6,6 +6,8 @@ import Message from './Message';
 import { AppContext } from '../../Context/AppProvider';
 import { addDocument } from '../../firebase/services';
 import { AuthContext } from '../../Context/AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import useFirestore from '../../hooks/useFirestore';
 
 const HeaderStyled = styled.div`
@@ -44,7 +46,7 @@ const WrapperStyled = styled.div`
 `;
 
 const ContentStyled = styled.div`
-  height: calc(100% - 56px);
+  height: calc(100% - 82px);
   display: flex;
   flex-direction: column;
   padding: 11px;
@@ -55,9 +57,10 @@ const FormStyled = styled(Form)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 98%;
   padding: 2px 2px 2px 0;
-  border: 1px solid rgb(230, 230, 230);
-  border-radius: 2px;
+  border: 2px solid rgb(230, 230, 230);
+  border-radius: 5px;
 
   .ant-form-item {
     flex: 1;
@@ -128,7 +131,7 @@ export default function ChatWindow() {
       {selectedRoom.id ? (
         <>
           <HeaderStyled>
-            <div className='header__info'>
+            <div className='header__info' style={{backgroundColor:"#f4fdf9",padding:"5px",borderRadius:"6px",paddingLeft:"10px",paddingRight:"10px"}}>
               <p className='header__title'>{selectedRoom.name}</p>
               <span className='header__description'>
                 {selectedRoom.description}
@@ -136,6 +139,7 @@ export default function ChatWindow() {
             </div>
             <ButtonGroupStyled>
               <Button
+                style={{backgroundColor:"#f4fdf9"}}
                 icon={<UserAddOutlined />}
                 type='text'
                 onClick={() => setIsInviteMemberVisible(true)}
@@ -178,8 +182,8 @@ export default function ChatWindow() {
                   autoComplete='off'
                 />
               </Form.Item>
-              <Button type='primary' onClick={handleOnSubmit}>
-                Gửi
+              <Button type='primary' onClick={handleOnSubmit} style={{backgroundColor:"transparent",color:"#615ef0"}}>
+              <FontAwesomeIcon icon={faPaperPlane} />
               </Button>
             </FormStyled>
           </ContentStyled>
